@@ -1,0 +1,7 @@
+{
+  "name": "context-optimizer",
+  "version": "0.1.0",
+  "description": "Read-only audit of Claude Code instructions, duplication and context overhead",
+  "author": {"name": "dino-db"},
+  "license": "MIT"
+}

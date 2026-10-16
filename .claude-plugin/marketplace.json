@@ -7,6 +7,11 @@
       "name": "engineering-workflow",
       "source": "./plugins/engineering-workflow",
       "description": "Read-only panel for the Explore, Plan, Implement, Verify workflow in any Git repository: agents, phases, modified files, verification, context, sessions and a link between sessions."
-    }
+    },
+{
+  "name": "context-optimizer",
+  "source": "./plugins/context-optimizer",
+  "description": "Read-only Claude Code instruction and context audit"
+}
   ]
 }
