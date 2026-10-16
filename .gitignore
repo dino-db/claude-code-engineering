@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local only: IDE settings and design notes
+.idea/
+/docs/

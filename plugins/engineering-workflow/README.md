@@ -7,6 +7,8 @@ A Claude Code mod that shows, in a persistent panel, how a session moves through
 It works in any Git repository with no configuration, and it is **read-only**: it blocks, rewrites and
 enforces nothing.
 
+<img src="assets/panel.png" alt="The Engineering Workflow panel" width="700">
+
 ## What it shows
 
 Two rows above the prompt, and the **Engineering Workflow** pane (opened at session start where the

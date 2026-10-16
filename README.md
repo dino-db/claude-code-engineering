@@ -45,6 +45,8 @@ All agents run on `sonnet` with `memory: local` and a bounded `maxTurns`.
 |--------|-------------|
 | [`engineering-workflow`](plugins/engineering-workflow/README.md) | A read-only panel that follows the loop below in any Git repository: agents at work, current phase, modified files with their diffs, verification status, context window, open sessions and a link between two sessions. Opening sessions is automatic only with Windows Terminal; elsewhere the panel gives the command to run ([details](plugins/engineering-workflow/README.md#platform-support)). |
 
+<img src="plugins/engineering-workflow/assets/panel.png" alt="The Engineering Workflow panel" width="600">
+
 ## Workflow
 
 ```
