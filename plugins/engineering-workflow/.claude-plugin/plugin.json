@@ -1,0 +1,9 @@
+{
+  "name": "engineering-workflow",
+  "version": "0.1.0",
+  "description": "Shows the Explore, Plan, Implement, Verify workflow of a Claude Code session in a persistent panel, in any Git repository: agents, phases, modified files, verification, context, sessions and a link between sessions. Read-only: blocks, rewrites and enforces nothing.",
+  "author": { "name": "Placido Di Blasi" },
+  "license": "MIT",
+  "keywords": ["workflow", "agents", "panel", "git"],
+  "types": "./types/index.d.ts"
+}

@@ -1,6 +1,6 @@
 # claude-code-engineering
 
-Modular agents, skills, hooks and workflows for [Claude Code](https://docs.claude.com/en/docs/claude-code), designed around a disciplined **explore → plan → execute → verify** engineering loop.
+Modular agents, skills and mods for [Claude Code](https://docs.claude.com/en/docs/claude-code), designed around a disciplined **explore → plan → execute → verify** engineering loop.
 
 Each agent has a single responsibility, a restricted tool set and an explicit handoff contract, so the parent session can delegate non-trivial work while keeping scope, risk and evidence under control.
 
@@ -8,11 +8,15 @@ Each agent has a single responsibility, a restricted tool set and an explicit ha
 
 ```
 .
+├── .claude-plugin/
+│   └── marketplace.json
 ├── agents/
 │   ├── codebase-explorer.md
 │   ├── implementation-planner.md
 │   ├── implementation-executor.md
 │   └── implementation-verifier.md
+├── plugins/
+│   └── engineering-workflow/
 └── skills/
     └── handoff/
         └── SKILL.md
@@ -34,6 +38,12 @@ All agents run on `sonnet` with `memory: local` and a bounded `maxTurns`.
 | Skill | Description |
 |-------|-------------|
 | `handoff` | Compacts the current session into a dense handoff document (saved to the OS temp directory) so a fresh agent can resume the work. Accepts an optional argument describing the focus of the next session. |
+
+### Plugins
+
+| Plugin | Description |
+|--------|-------------|
+| [`engineering-workflow`](plugins/engineering-workflow/README.md) | A read-only panel that follows the loop below in any Git repository: agents at work, current phase, modified files with their diffs, verification status, context window, open sessions and a link between two sessions. Opening sessions is automatic only with Windows Terminal; elsewhere the panel gives the command to run ([details](plugins/engineering-workflow/README.md#platform-support)). |
 
 ## Workflow
 
@@ -75,6 +85,13 @@ cp -r skills/* .claude/skills/
 
 Restart Claude Code (or run `/agents`) to load the new agents.
 
+**Plugins**, from this repository's marketplace:
+
+```bash
+claude plugin marketplace add <owner>/claude-code-engineering
+claude plugin install engineering-workflow@claude-code-engineering
+```
+
 ## Usage
 
 Agents are invoked automatically when their description matches the task, or explicitly:
@@ -92,14 +109,14 @@ Invoke the skill with:
 
 ## Customization
 
-- **High-risk areas**: `implementation-planner` and `implementation-executor` list project-specific high-risk areas (shared geometry, rendering pipelines, Redux boundaries, Legacy/React integration, …). Adapt these lists to your codebase. `implementation-verifier` uses generic categories and also honors areas flagged as high-risk in the approved plan.
+- **High-risk areas**: the planner, executor and verifier share generic high-risk categories (shared modules, public interfaces, state boundaries, integration points, persisted data, security-sensitive code, concurrency, configuration) and honor areas flagged as high-risk in the plan or project documentation. Add your codebase's own to the lists.
 - **Testing conventions**: `implementation-verifier` discovers test, lint and build commands from the plan, project instructions (`CLAUDE.md`, `CONTRIBUTING.md`), build manifests and CI configuration.
 - **Model and limits**: adjust `model`, `maxTurns` and `permissionMode` in each agent's frontmatter.
 
 ## Roadmap
 
-- Hooks
 - Reusable workflows
+- More terminal backends for the sessions menu (`tmux`)
 
 ## License
 

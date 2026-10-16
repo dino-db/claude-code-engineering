@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-engineering",
+  "owner": { "name": "Placido Di Blasi" },
+  "description": "Modular agents, skills and mods for an explore, plan, execute, verify engineering loop in Claude Code.",
+  "plugins": [
+    {
+      "name": "engineering-workflow",
+      "source": "./plugins/engineering-workflow",
+      "description": "Read-only panel for the Explore, Plan, Implement, Verify workflow in any Git repository: agents, phases, modified files, verification, context, sessions and a link between sessions."
+    }
+  ]
+}

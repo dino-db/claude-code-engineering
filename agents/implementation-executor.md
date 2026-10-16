@@ -75,14 +75,16 @@ Do not silently redesign the solution.
 
 Use extra caution when modifying:
 
-* Shared geometry
-* Rendering pipelines
-* Redux store boundaries
-* Legacy and React integration
-* Shared utilities
-* Public interfaces
-* Persisted data
-* Runtime or deployment configuration
+* Shared modules and utilities with many consumers
+* Public interfaces and exported APIs
+* State management and data-flow boundaries
+* Integration points between subsystems, layers, or frameworks
+* Persisted data, schemas, and migrations
+* Security-sensitive code (authentication, authorization, input handling)
+* Concurrency and asynchronous behavior
+* Runtime, build, or deployment configuration
+
+Treat any area flagged as high-risk in the approved plan or project documentation as high-risk.
 
 For high-risk changes:
 

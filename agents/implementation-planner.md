@@ -55,7 +55,9 @@ When explorer findings are available:
 
 ## High-Risk Changes
 
-Treat shared geometry, rendering, Redux boundaries, Legacy/React integration, public interfaces, persisted data, and runtime configuration as high-risk.
+Treat as high-risk: shared modules and utilities with many consumers, public interfaces and exported APIs, state management and data-flow boundaries, integration points between subsystems, layers, or frameworks, persisted data, schemas, and migrations, security-sensitive code, concurrency and asynchronous behavior, and runtime, build, or deployment configuration.
+
+Also treat any area the project documentation flags as high-risk as high-risk.
 
 For high-risk changes:
 
