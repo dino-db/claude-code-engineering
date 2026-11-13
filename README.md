@@ -17,7 +17,8 @@ Each agent has a single responsibility, a restricted tool set and an explicit ha
 │   └── implementation-verifier.md
 ├── plugins/
 │   ├── context-optimizer/
-│   └── engineering-workflow/
+│   ├── engineering-workflow/
+│   └── tool-health/
 └── skills/
     └── handoff/
         └── SKILL.md
@@ -46,6 +47,7 @@ All agents run on `sonnet` with `memory: local` and a bounded `maxTurns`.
 |--------|-------------|
 | [`context-optimizer`](plugins/context-optimizer/README.md) | A read-only audit of Claude Code instruction files (`CLAUDE.md`, `AGENTS.md`, `.claude/**/*.md`): oversized files and guidance repeated across files, reported with file and line evidence. Run it with `/context-optimizer:optimize`, or run `scripts/audit_context.py` on its own. It edits nothing and asks before any later change. |
 | [`engineering-workflow`](plugins/engineering-workflow/README.md) | A read-only panel that follows the loop below in any Git repository: agents at work, current phase, modified files with their diffs, verification status, context window, open sessions and a link between two sessions. Opening sessions is automatic only with Windows Terminal; elsewhere the panel gives the command to run ([details](plugins/engineering-workflow/README.md#platform-support)). |
+| [`tool-health`](plugins/tool-health/README.md) | Remembers tools that fail for structural reasons in your environment (a `WebSearch` rejected by the API gateway, a CLI that isn't installed, an MCP server that is down) and tells Claude at the next session start, with an alternative. Transient errors and user rejections are ignored; entries clear when the tool works again or after 7 days. It never blocks a tool call; its only write is its own state file. List or reset entries with `/tool-health:status`. |
 
 <img src="plugins/engineering-workflow/assets/panel.png" alt="The Engineering Workflow panel" width="600">
 
@@ -95,6 +97,7 @@ Restart Claude Code (or run `/agents`) to load the new agents.
 claude plugin marketplace add <owner>/claude-code-engineering
 claude plugin install engineering-workflow@claude-code-engineering
 claude plugin install context-optimizer@claude-code-engineering
+claude plugin install tool-health@claude-code-engineering
 ```
 
 ## Usage
@@ -116,6 +119,13 @@ Audit a project's instruction files for duplication and context overhead:
 
 ```
 /context-optimizer:optimize
+```
+
+See which tools `tool-health` has recorded as not working here, or forget one:
+
+```
+/tool-health:status
+/tool-health:status reset gh
 ```
 
 ## Customization
