@@ -1,0 +1,8 @@
+{
+  "name": "tool-health",
+  "version": "0.1.0",
+  "description": "Remembers tools that fail for structural reasons in this environment (unsupported by the API gateway, command not installed, MCP server down) and reminds Claude at session start",
+  "author": {"name": "dino-db"},
+  "license": "MIT",
+  "keywords": ["hooks", "tools", "gateway", "mcp", "reliability"]
+}
