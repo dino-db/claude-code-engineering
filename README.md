@@ -94,7 +94,7 @@ Restart Claude Code (or run `/agents`) to load the new agents.
 **Plugins**, from this repository's marketplace:
 
 ```bash
-claude plugin marketplace add <owner>/claude-code-engineering
+claude plugin marketplace add dino-db/claude-code-engineering
 claude plugin install engineering-workflow@claude-code-engineering
 claude plugin install context-optimizer@claude-code-engineering
 claude plugin install tool-health@claude-code-engineering

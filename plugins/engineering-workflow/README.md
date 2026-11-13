@@ -140,7 +140,7 @@ answer it gives for itself is its own `message_partner` tool's.
 From this repository's marketplace:
 
 ```bash
-claude plugin marketplace add <owner>/claude-code-engineering
+claude plugin marketplace add dino-db/claude-code-engineering
 claude plugin install engineering-workflow@claude-code-engineering
 ```
 
