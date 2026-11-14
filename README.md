@@ -1,4 +1,4 @@
-# claude-code-engineering
+# claude-code-engineering dino-db
 
 Modular agents, skills and mods for [Claude Code](https://docs.claude.com/en/docs/claude-code), designed around a disciplined **explore → plan → execute → verify** engineering loop.
 
